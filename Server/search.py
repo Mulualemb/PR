@@ -10,7 +10,6 @@ class Test_apiweb:
         value = x.status_code
         assert  value == 200
 
-
     # api login deny test
     def test_get_deny(self):
         url = "https://reqres.in/api/login"
@@ -18,7 +17,6 @@ class Test_apiweb:
         x = requests.post(url,data=myobj)
         value = x.status_code
         assert value == 400
-
 
     # api create test
     def test_get_create(self):
@@ -28,7 +26,6 @@ class Test_apiweb:
         value = x.status_code
         assert value == 201
 
-
     # api update test
     def test_get_update(self):
         url = "https://reqres.in/api/users/2"
@@ -36,7 +33,6 @@ class Test_apiweb:
         x = requests.patch(url,data=myobj)
         value = x.status_code
         assert value == 200
-
 
     # api delete test(not working)
     # def test_get_delete(self):
@@ -47,7 +43,7 @@ class Test_apiweb:
     #     assert value == 204
 
 
-    # test list_users test
+    # test list_users api test
     def test_get_users(self):
         url = "https://reqres.in/api/users?page=2"
         myobj = {id: 7, "email": "michael.lawson@reqres.in", "first_name": "Michael", "last_name": "Lawson"}
@@ -55,14 +51,50 @@ class Test_apiweb:
         value = x.status_code
         assert value == 200
 
-
-    # single user test
-    def test_get_users(self):
+    # single user api test
+    def test_get_single_user(self):
         url = "https://reqres.in/api/users/2"
         myobj = {id: 2, "email": "janet.weaver@reqres.in", "first_name": "Janet", "last_name": "Weaver"}
         x = requests.get(url,data=myobj)
         value = x.status_code
         assert value == 200
 
+    # single_resource_api test
+    def test_single_resource(self):
+        url = "https://reqres.in/api/unknown/2"
+        myobj = {id: 2, "name": "fuchsia rose", "year": 2001, "color": "#C74375", "pantone_value": "17-2031"}
+        x = requests.get(url,data=myobj)
+        value = x.status_code
+        assert value == 200
 
+    # single resource not found api test
+    def test_single_resource_not_found(self):
+        url = "https://reqres.in/api/unknown/23"
+        myobj = {}
+        x = requests.get(url,data=myobj)
+        value = x.status_code
+        assert value == 404
 
+    #  register api test
+    def test_register_api(self):
+        url =  "https://reqres.in/api/register"
+        myobj = {"email": "eve.holt@reqres.in", "password": "pistol"}
+        x = requests.post(url,data=myobj)
+        value =x.status_code
+        assert value == 200
+
+    # successful register api test
+    def test_successful_register(self):
+        url =  "https://reqres.in/api/register"
+        myobj = {"email": "eve.holt@reqres.in", "password": "pistol"}
+        x = requests.post(url,data=myobj)
+        value =x.status_code
+        assert value == 200
+
+    # unsuccessful register api test
+    def test_unsuccessful_register(self):
+        url = "https://reqres.in/api/register"
+        myobj = {"email": "sydney@fife"}
+        x = requests.post(url, data=myobj)
+        value = x.status_code
+        assert value == 400
