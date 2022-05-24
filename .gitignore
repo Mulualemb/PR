@@ -1,2 +1,4 @@
 .idea/
 Reports/
+allure-report/
+.pytest_cache/
