@@ -1,6 +1,6 @@
 import requests
 
-
+# api tests via https://reqres.in/
 class Test_apiweb:
     # api login test
     def test_get_stats(self):
