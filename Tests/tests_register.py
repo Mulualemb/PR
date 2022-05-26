@@ -13,7 +13,7 @@ class Test_register(Base):
         register.click_register()
         register.send_pass("123123")
         register.send_confirm("123123")
-        register.send_email(f"{register.rd()}@iuy.ck")
+        register.send_email(f"{register.rd()}@luo.uk")
         register.click_sign()
         value = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.XPATH,Locators.register_locators.RegisterLocators.logout_button))
@@ -29,7 +29,7 @@ class Test_register(Base):
         register.click_register()
         register.send_pass("123457")
         register.send_confirm("687456")
-        register.send_email(f"{register.rd()}@iuy.ck")
+        register.send_email(f"{register.rd()}@ioi.ck")
         register.click_sign()
         value = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.XPATH,Locators.register_locators.RegisterLocators.sign_up))
@@ -58,7 +58,7 @@ class Test_register(Base):
         register.click_register()
         register.send_pass("123457")
         register.send_confirm("")
-        register.send_email(f"{register.rd()}@iuy.ck")
+        register.send_email(f"{register.rd()}@ohy.ck")
         register.click_sign()
         value = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.XPATH,Locators.register_locators.RegisterLocators.sign_up))
@@ -67,7 +67,7 @@ class Test_register(Base):
 
 
 
-
+# simple test
     def test_failed_registration_null_password(self):
         driver = self.driver
         register = Register_page(driver)
